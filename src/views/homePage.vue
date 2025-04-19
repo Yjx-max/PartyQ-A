@@ -36,8 +36,8 @@
 }
 
 .xx img {
-    width: 111px;
-    height: 38px;
+    width: 120px;
+    height: 34px;
     padding: 9px;
     float: right;
 }
