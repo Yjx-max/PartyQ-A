@@ -1,11 +1,9 @@
 <script setup>
 import router from '@/router';
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
 import Rank from '@/components/rankView.vue'
-import PersonalInfo from '@/components/personalInfo.vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
-import { Picker, Snackbar } from '@varlet/ui'
+
+import { Picker } from '@varlet/ui'
 import { changeUser, getParty } from '@/ulits/http.js';
 
 const name = ref('');
@@ -181,13 +179,6 @@ onMounted(() => {
     <div style="position: relative;top: -50px;">
         <Rank />
     </div>
-
-    <!-- 更改个人信息 的组件 -->
-    <!-- <PersonalInfo :visible="visible" :selectedFacultad="selectedFacultad" :selectedCurso="selectedCurso"
-        :selectedClase="selectedClase" @update:visible="visible = $event"
-        @update:selectedFacultad="selectedFacultad = $event" @update:selectedCurso="selectedCurso = $event"
-        @update:selectedClase="selectedClase = $event" /> -->
-
 
 </template>
 

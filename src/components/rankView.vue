@@ -2,13 +2,6 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
-// const props = defineProps({
-//     userrank: {
-//         type: Array,
-//         default: [1, 1]
-//     },
-// })
-
 const basurl = 'https://partyqa.rrrexyz.icu';
 
 onMounted(() => {
@@ -45,6 +38,7 @@ function fetchRanks() {
     })
         .then((response) => {
             if (response.data && response.data.data && response.data.data.ranking && response.data.data.self_ranking) {
+                // console.log(response.data.data.self_ranking)
                 current.value = response.data.data.ranking;
                 my_current.value = response.data.data.self_ranking;
                 // console.log(response.data.data.self_ranking.student_id == undefined)
@@ -103,7 +97,7 @@ function fetchAllRanks() {
             <ul>
                 <li>排名</li>
                 <li>用户名</li>
-                <li>题目正确数</li>
+                <li>正确数</li>
                 <li>平均用时</li>
             </ul>
         </div>
@@ -188,7 +182,7 @@ body {
 .bar {
     width: 100%;
     height: 40px;
-    font-size: 20px;
+    font-size: 16px;
     padding: 0 20px;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(95, 91, 91, 0.4);
@@ -197,14 +191,14 @@ body {
 
 .bar ul li {
     line-height: 40px;
-    width: 60px;
+    width: 70px;
 }
 
 .data {
     width: 100%;
     height: 34px;
     line-height: 34px;
-    font-size: 20px;
+    font-size: 16px;
     display: flex;
     justify-content: space-around;
     padding: 0 20px;
@@ -222,7 +216,7 @@ body {
     width: 90%;
     height: 71px;
     line-height: 71px;
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 5px;
     box-shadow:
         inset 0 4px 4px rgba(0, 0, 0, 0.25),

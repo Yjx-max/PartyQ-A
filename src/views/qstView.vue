@@ -1,8 +1,8 @@
 <script setup>
 import axios from 'axios';
-import { ref, computed, onMounted, onUnmounted, reactive } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import router from '@/router';
-import { alertEffects, ElMessage } from 'element-plus';
+import { ElMessage } from 'element-plus';
 import { answerQst } from "@/ulits/http.js"
 
 const basurl = 'https://partyqa.rrrexyz.icu';
@@ -28,10 +28,6 @@ const questions = ref([{
     "C": "",
     "answer": ""
 }]);
-
-
-let Type;
-
 
 //题目内容start----------------------------
 // 计算属性：获取 questions 的长度
@@ -277,17 +273,15 @@ function checkout_answer() {
 
 //题目ens-------------------------------
 
-
-
-
 //做过题直接显示答案
 const checkout_status = () => {
-    if (participate_status.value == 1) {//直接显示做题记录
+    if (participate_status.value == 1) {
+        //直接显示做题记录
         // 获取当前问题的正确答案 转换为数组
-        var correctAnswer = questions.value[current_que.value]['answer'];
+        let correctAnswer = questions.value[current_que.value]['answer'];
         correctAnswers.value = correctAnswer
         // 获取用户的选择答案 转换为数组
-        var userAnswer = record.value[current_que.value]['user_answer'];
+        let userAnswer = record.value[current_que.value]['user_answer'];
         userAnswers.value = userAnswer;
         // console.log(questions.value[current_que.value])
         // console.log(correctAnswers.value)
@@ -400,6 +394,7 @@ const handleSubmit = () => {
     // console.log('time_used_seconds:', used_time.value)
     // console.log('correct_num:', cor_num.value)
     // console.log("user_answers:", user_answers)
+
     let data = {
         "student_id": student_id.value,
         "project_uuid": project_uuid.value,
@@ -454,9 +449,6 @@ onMounted(() => {
     console.log(student_id.value)
     getData()
 
-    // startTimer()
-    // fetchData()
-    // validateParams()
 })
 
 // 在组件卸载时清理计时器

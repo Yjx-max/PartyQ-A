@@ -1,7 +1,7 @@
 // 所有request请求放这里，在login.vue里引用
 import router from '@/router';
 import axios from "axios";
-import { ref } from "vue";
+
 import { Auth } from "@/ulits/authentication.js";
 import { ElMessage } from "element-plus";
 
