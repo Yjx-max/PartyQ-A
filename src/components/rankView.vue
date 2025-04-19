@@ -1,10 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import axios from 'axios';
 
 const basurl = 'https://partyqa.rrrexyz.icu';
 
-onMounted(() => {
+onBeforeMount(() => {
     name.value = localStorage.getItem("name")
     student_id.value = localStorage.getItem("student_id")
     fetchRanks();
@@ -19,6 +19,7 @@ const my_current = ref({});
 const allRank = ref([]);
 const my_all = ref([]);
 const activeTab = ref('Tab1');
+const myrank = ref()
 
 const tabs = ref([
     { id: 'Tab1', name: '当前排行榜' },
@@ -41,7 +42,12 @@ function fetchRanks() {
                 // console.log(response.data.data.self_ranking)
                 current.value = response.data.data.ranking;
                 my_current.value = response.data.data.self_ranking;
-                // console.log(response.data.data.self_ranking.student_id == undefined)
+                myrank.value = response.data.data.self_ranking.rank
+                console.log(typeof (myrank.value))
+                console.log(myrank.value)
+                console.log(typeof (current.value[1]['rank']))
+                console.log(current.value[1]['rank'])
+                console.log(myrank.value == current.value[1]['rank'])
                 if (response.data.data.self_ranking.student_id == undefined) {
                     console.log("empty")
                     my_current.value = {
@@ -91,7 +97,7 @@ function fetchAllRanks() {
         </div>
     </div>
 
-    <!-- 排行榜 -->
+    <!-- 排行榜  i.rank == myrank.value-->
     <div class="mainContect">
         <div class="bar">
             <ul>
@@ -102,7 +108,8 @@ function fetchAllRanks() {
             </ul>
         </div>
         <!-- 当前 -->
-        <div v-for="(i, index) in current" v-if="activeTab === 'Tab1'" class="data" :key="index">
+        <div v-for="(i, index) in current" v-if="activeTab === 'Tab1'" class="data" :key="index"
+            :class="[((index + 1) == Number(myrank.value)) ? 'mymyrank' : 'others']">
             <div style="color: rgba(95, 91, 91, 1); opacity: 0.4;">{{ i.rank }}</div>
             <div>{{ i.name }}</div>
             <div style="color: rgba(95, 91, 91, 1);">{{ i.correct_num }}</div>
@@ -133,6 +140,7 @@ function fetchAllRanks() {
         <div style="color: rgba(95, 91, 91, 1);">{{ my_all.total_correct_num }}</div>
         <div>{{ my_all.average_time_used_seconds }}</div>
     </div>
+
 </template>
 
 
@@ -140,6 +148,14 @@ function fetchAllRanks() {
 body {
     margin: 0;
     padding: 0;
+}
+
+.mymyrank {
+    background-color: aqua;
+}
+
+.others {
+    background-color: white;
 }
 
 .parent {
