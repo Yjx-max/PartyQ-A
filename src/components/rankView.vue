@@ -2,7 +2,7 @@
 import { ref, onBeforeMount, onMounted } from 'vue';
 import axios from 'axios';
 
-const basurl = 'https://partyqa.rrrexyz.icu';
+const baseurl = 'https://dangjian.0linetekcenter.tech';
 
 onMounted(() => {
     name.value = localStorage.getItem("name")
@@ -32,7 +32,7 @@ const openTab = (tabId) => {
 
 function fetchRanks() {
     console.log(student_id.value)
-    axios.get(basurl + '/api/ranking', {
+    axios.get(baseurl + '/api/ranking', {
         params: {
             "student_id": student_id.value
         }
@@ -68,7 +68,7 @@ function fetchRanks() {
 }
 
 function fetchAllRanks() {
-    axios.get(basurl + '/api/ranking/all', {
+    axios.get(baseurl + '/api/ranking/all', {
         params: {
             student_id: student_id.value
         }

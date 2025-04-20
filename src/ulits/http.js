@@ -8,7 +8,7 @@ import { ElMessage } from "element-plus";
 let isRefreshing = false
 
 const request = axios.create({
-    baseURL: "https://partyqa.rrrexyz.icu/api"
+    baseURL: "https://dangjian.0linetekcenter.tech/api"
 })
 
 // const setToken = (access_token, refresh_token) => {

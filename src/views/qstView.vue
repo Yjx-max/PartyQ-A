@@ -5,7 +5,7 @@ import router from '@/router';
 import { ElMessage } from 'element-plus';
 import { answerQst } from "@/ulits/http.js"
 
-const basurl = 'https://partyqa.rrrexyz.icu';
+const baseurl = 'https://dangjian.0linetekcenter.tech';
 
 // 定义响应式数据------------------------
 const isOverlayVisible = ref(false);
@@ -330,7 +330,7 @@ function nextQ() {
 // 获取数据
 const getData = async () => {
     console.log(current_que.value)
-    axios.get(`${basurl}/api/user/project/${project_uuid.value}`, {
+    axios.get(`${baseurl}/api/user/project/${project_uuid.value}`, {
         params: {
             student_id: student_id.value
         }

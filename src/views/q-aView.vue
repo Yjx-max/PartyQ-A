@@ -4,10 +4,10 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import router from '@/router';
 
-const basurl = 'https://partyqa.rrrexyz.icu';
+const baseurl = 'https://dangjian.0linetekcenter.tech';
 
 function fetchAllQA() {
-    axios.get(basurl + '/api/user/projects/all')
+    axios.get(baseurl + '/api/user/projects/all')
         .then((response) => {
             if (response.data && response.data.data) {
                 allQA.value = response.data.data;
@@ -21,7 +21,7 @@ function fetchAllQA() {
 };
 
 function fetchQA() {
-    axios.get(basurl + '/api/user/projects/participate', {
+    axios.get(baseurl + '/api/user/projects/participate', {
         params: {
             student_id: student_id.value
         }
@@ -189,7 +189,7 @@ const getStatusClass = (status) => {
     width: 90%;
     height: 125px;
     border: 1px solid rgba(228, 228, 228, 1);
-    font-size: 14px;
+    font-size: 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
