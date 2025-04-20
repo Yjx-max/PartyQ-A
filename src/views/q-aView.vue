@@ -112,8 +112,8 @@ const getStatusClass = (status) => {
             </div>
             <div id="second-line">
                 <div>
-                    <div>开始时间: {{ i.starttime }}</div>
-                    <div>截止时间: {{ i.deadline }}</div>
+                    <div style="margin-top: 7px;">开始时间: {{ i.starttime }}</div>
+                    <div style="margin-top: 7px;">截止时间: {{ i.deadline }}</div>
                 </div>
             </div>
         </div>
@@ -129,8 +129,8 @@ const getStatusClass = (status) => {
             </div>
             <div id="second-line">
                 <div>
-                    <div>开始时间: {{ i.starttime }}</div>
-                    <div>截止时间: {{ i.deadline }}</div>
+                    <div style="margin-top: 7px;">开始时间: {{ i.starttime }}</div>
+                    <div style="margin-top: 7px;">截止时间: {{ i.deadline }}</div>
                 </div>
             </div>
         </div>
@@ -189,7 +189,7 @@ const getStatusClass = (status) => {
     width: 90%;
     height: 125px;
     border: 1px solid rgba(228, 228, 228, 1);
-    font-size: 10px;
+    font-size: 14px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -199,15 +199,18 @@ const getStatusClass = (status) => {
 }
 
 #first-line {
+    position: relative;
+    top: 10px;
     width: 100%;
-    height: 125px;
+    height: 120px;
     display: flex;
     justify-content: space-between;
 }
 
 #name {
     position: relative;
-    top: 5px;
+    top: 8px;
+    font-weight: bold;
 }
 
 #second-line {
@@ -219,6 +222,7 @@ const getStatusClass = (status) => {
 
 .status0 {
     height: 20px;
+    font-size: 12px;
     background-color: rgba(244, 244, 245, 1);
     padding: 5px 10px;
     border-radius: 15px;
@@ -228,6 +232,7 @@ const getStatusClass = (status) => {
 
 .status1 {
     height: 20px;
+    font-size: 12px;
     line-height: 20px;
     background-color: rgba(240, 249, 235, 1);
     color: rgba(103, 194, 58, 1);
@@ -237,6 +242,7 @@ const getStatusClass = (status) => {
 
 .status2 {
     height: 20px;
+    font-size: 12px;
     line-height: 20px;
     background-color: rgba(254, 240, 240, 1);
     padding: 5px 10px;

@@ -62,10 +62,18 @@ onMounted(() => {
             </div>
             <div class="remember">
                 <div class="flex-row">
-                    <div>
+                    <!-- <input v-model="isRemember" type="checkbox"> -->
+
+                    <!-- <el-checkbox v-model="isRemember" label="记住密码" size="large" fill="#00000" /> -->
+                    <label class="container">
                         <input v-model="isRemember" type="checkbox">
-                        <label style="margin-left: 5px;">remember me</label>
-                    </div>
+                        <svg viewBox="0 0 64 64" height="15px" width="15px">
+                            <path
+                                d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                                pathLength="575.0541381835938" class="path"></path>
+                        </svg>
+                    </label>
+                    <label style="margin-left: 5px;line-height: 16px;">记住密码</label>
                 </div>
             </div>
             <div class="loginBtnDiv">
@@ -125,6 +133,7 @@ onMounted(() => {
 }
 
 .field {
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,13 +166,18 @@ onMounted(() => {
 .remember {
     position: relative;
     top: 60px;
-    right: 40px;
-    width: 100%;
-    height: 5%;
+    width: 76%;
+    padding: 0 12%;
+    height: 1rem;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     margin: 20px 0;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
 }
 
 .loginBtnDiv {
@@ -225,5 +239,35 @@ onMounted(() => {
 .fb {
     margin-left: 5px;
     color: #2332dc;
+}
+
+.container {
+    position: relative;
+    top: 1px;
+    cursor: pointer;
+}
+
+.container input {
+    display: none;
+}
+
+.container svg {
+    overflow: visible;
+}
+
+.path {
+    fill: none;
+    stroke: black;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+    stroke-dasharray: 241 9999999;
+    stroke-dashoffset: 0;
+}
+
+.container input:checked~svg .path {
+    stroke-dasharray: 70.5096664428711 9999999;
+    stroke-dashoffset: -262.2723388671875;
 }
 </style>

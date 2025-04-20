@@ -20,6 +20,7 @@ const allRank = ref([]);
 const my_all = ref([]);
 const activeTab = ref('Tab1');
 const myrank = ref()
+const myrankAll = ref()
 
 const tabs = ref([
     { id: 'Tab1', name: '当前排行榜' },
@@ -43,11 +44,11 @@ function fetchRanks() {
                 current.value = response.data.data.ranking;
                 my_current.value = response.data.data.self_ranking;
                 myrank.value = response.data.data.self_ranking.rank
-                console.log(typeof (myrank.value))
-                console.log(myrank.value)
-                console.log(typeof (current.value[1]['rank']))
-                console.log(current.value[1]['rank'])
-                console.log(myrank.value == current.value[1]['rank'])
+                // console.log(typeof (myrank.value))
+                // console.log(myrank.value)
+                // console.log(typeof (current.value[1]['rank']))
+                // console.log(current.value[1]['rank'])
+                // console.log(myrank.value == current.value[1]['rank'])
                 if (response.data.data.self_ranking.student_id == undefined) {
                     console.log("empty")
                     my_current.value = {
@@ -77,6 +78,7 @@ function fetchAllRanks() {
             if (response.data && response.data.data && response.data.data.ranking && response.data.data.self_ranking) {
                 allRank.value = response.data.data.ranking;
                 my_all.value = response.data.data.self_ranking;
+                myrankAll.value = response.data.data.self_ranking.rank
                 console.log(response.data.data)
             } else {
                 console.error('响应数据格式不正确');
@@ -116,7 +118,8 @@ function fetchAllRanks() {
             <div>{{ i.time_used_seconds }}</div>
         </div>
         <!-- 往期 -->
-        <div v-for="(j, index) in allRank" v-if="activeTab === 'Tab2'" :key="index" class="data">
+        <div v-for="(j, index) in allRank" v-if="activeTab === 'Tab2'" :key="index" class="data"
+            :class="[(j.rank == myrankAll) ? 'mymyrank' : 'others']">
             <div style="color: rgba(95, 91, 91, 1); opacity: 0.4;">{{ j.rank }}</div>
             <div>{{ j.name }}</div>
             <div style="color: rgba(95, 91, 91, 1);">{{ j.total_correct_num }}</div>
@@ -230,15 +233,15 @@ body {
     opacity: 100%;
     background-color: white;
     width: 90%;
-    height: 71px;
-    line-height: 71px;
+    height: 50px;
+    line-height: 50px;
     font-size: 16px;
     border-radius: 5px;
     box-shadow:
         inset 0 4px 4px rgba(0, 0, 0, 0.25),
         0 4px 4px rgba(0, 0, 0, 0.25);
     position: fixed;
-    bottom: 10px;
+    bottom: 35px;
     left: 50%;
     /* 将左边缘定位到视口宽度的50% */
     transform: translateX(-50%);

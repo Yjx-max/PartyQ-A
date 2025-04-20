@@ -53,7 +53,7 @@ export const Auth = async (usrData, Success, Fail, Other = () => { }) => {
     //打印信息
     // alert("欢迎您" + userNameMatch[1]);
     console.log("欢迎您" + userNameMatch[1])
-
+    ElMessage.success("欢迎您 " + userNameMatch[1])
     //存贮信息
     localStorage.setItem("name", String(userNameMatch[1]))
     console.log(localStorage.getItem("name"))
