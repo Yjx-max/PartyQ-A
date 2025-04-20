@@ -1,10 +1,10 @@
 <script setup>
-import { ref, onBeforeMount } from 'vue';
+import { ref, onBeforeMount, onMounted } from 'vue';
 import axios from 'axios';
 
 const basurl = 'https://partyqa.rrrexyz.icu';
 
-onBeforeMount(() => {
+onMounted(() => {
     name.value = localStorage.getItem("name")
     student_id.value = localStorage.getItem("student_id")
     fetchRanks();
@@ -109,7 +109,7 @@ function fetchAllRanks() {
         </div>
         <!-- 当前 -->
         <div v-for="(i, index) in current" v-if="activeTab === 'Tab1'" class="data" :key="index"
-            :class="[((index + 1) == Number(myrank.value)) ? 'mymyrank' : 'others']">
+            :class="[(i.rank == myrank) ? 'mymyrank' : 'others']">
             <div style="color: rgba(95, 91, 91, 1); opacity: 0.4;">{{ i.rank }}</div>
             <div>{{ i.name }}</div>
             <div style="color: rgba(95, 91, 91, 1);">{{ i.correct_num }}</div>
@@ -151,7 +151,7 @@ body {
 }
 
 .mymyrank {
-    background-color: aqua;
+    background-color: rgb(227, 255, 255);
 }
 
 .others {

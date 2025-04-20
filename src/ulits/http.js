@@ -44,11 +44,14 @@ const Success = () => {
     // resultDiv.style.color = "green";
     router.push('/homepage')
 };
+const Other = () => {
+    ElMessage.error("网络错误，登录失败，请重新登录")
+}
 
 const login = async (usrData) => {
     // const resultDiv = document.getElementById("result");
     // resultDiv.innerHTML = `正在连接认证服务器...`;
-    Auth(usrData, Success, Fail);
+    Auth(usrData, Success, Fail, Other);
 };
 
 // const login = async (data) => {
